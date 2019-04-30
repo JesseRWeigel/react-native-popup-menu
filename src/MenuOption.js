@@ -66,11 +66,11 @@ export class MenuOption extends Component {
       return rendered
     } else {
       const { Touchable, defaultTouchableProps } = makeTouchable(
-        customStyles.OptionTouchableComponent
+        customStyles.OptionTouchableComponent,
+        testID
       )
       return (
         <Touchable
-          testID={testID}
           onPress={() => this._onSelect()}
           {...defaultTouchableProps}
           {...customStyles.optionTouchable}
