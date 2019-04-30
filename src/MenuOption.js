@@ -38,7 +38,7 @@ export class MenuOption extends Component {
       disableTouchable,
       children,
       style,
-      testID,
+      ...other
     } = this.props
     const customStyles = this._getCustomStyles()
     if (text && React.Children.count(children) > 0) {
@@ -58,10 +58,7 @@ export class MenuOption extends Component {
       )
     }
     const rendered = (
-      <View
-        testID={testID}
-        style={[defaultStyles.option, customStyles.optionWrapper, style]}
-      >
+      <View style={[defaultStyles.option, customStyles.optionWrapper, style]}>
         {text ? <Text style={customStyles.optionText}>{text}</Text> : children}
       </View>
     )
@@ -76,6 +73,7 @@ export class MenuOption extends Component {
           onPress={() => this._onSelect()}
           {...defaultTouchableProps}
           {...customStyles.optionTouchable}
+          {...other}
         >
           {rendered}
         </Touchable>

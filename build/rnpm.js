@@ -2491,7 +2491,7 @@
             disableTouchable = _this$props.disableTouchable,
             children = _this$props.children,
             style = _this$props.style,
-            testID = _this$props.testID;
+            other = _objectWithoutProperties(_this$props, ["text", "disabled", "disableTouchable", "children", "style"]);
 
         var customStyles = this._getCustomStyles();
 
@@ -2509,7 +2509,6 @@
         }
 
         var rendered = React__default.createElement(reactNative.View, {
-          testID: testID,
           style: [defaultStyles.option, customStyles.optionWrapper, style]
         }, text ? React__default.createElement(reactNative.Text, {
           style: customStyles.optionText
@@ -2526,7 +2525,7 @@
             onPress: function onPress() {
               return _this._onSelect();
             }
-          }, defaultTouchableProps, customStyles.optionTouchable), rendered);
+          }, defaultTouchableProps, customStyles.optionTouchable, other), rendered);
         }
       }
     }]);
