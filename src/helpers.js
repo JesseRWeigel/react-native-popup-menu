@@ -44,10 +44,10 @@ export function makeTouchable(TouchableComponent, testID) {
   if (Touchable === TouchableHighlight) {
     defaultTouchableProps = {
       underlayColor: 'rgba(0, 0, 0, 0.1)',
-      testID: testID,
     }
   }
-  return { Touchable, defaultTouchableProps }
+  let test = { testID: testID }
+  return { Touchable, defaultTouchableProps, test }
 }
 
 function includes(arr, value) {
