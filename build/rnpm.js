@@ -212,14 +212,17 @@
 
     if (Touchable === reactNative.TouchableHighlight) {
       defaultTouchableProps = {
-        underlayColor: 'rgba(0, 0, 0, 0.1)',
-        testID: testID
+        underlayColor: 'rgba(0, 0, 0, 0.1)'
       };
     }
 
+    var test = {
+      testID: testID
+    };
     return {
       Touchable: Touchable,
-      defaultTouchableProps: defaultTouchableProps
+      defaultTouchableProps: defaultTouchableProps,
+      test: test
     };
   }
   /**
