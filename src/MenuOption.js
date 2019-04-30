@@ -58,7 +58,10 @@ export class MenuOption extends Component {
       )
     }
     const rendered = (
-      <View style={[defaultStyles.option, customStyles.optionWrapper, style]}>
+      <View
+        testID={testID}
+        style={[defaultStyles.option, customStyles.optionWrapper, style]}
+      >
         {text ? <Text style={customStyles.optionText}>{text}</Text> : children}
       </View>
     )
@@ -66,8 +69,7 @@ export class MenuOption extends Component {
       return rendered
     } else {
       const { Touchable, defaultTouchableProps } = makeTouchable(
-        customStyles.OptionTouchableComponent,
-        testID
+        customStyles.OptionTouchableComponent
       )
       return (
         <Touchable

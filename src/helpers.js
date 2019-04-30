@@ -32,7 +32,7 @@ export const makeName = (function() {
  * Create touchable component based on passed parameter and platform.
  * It also returns default props for specific touchable types.
  */
-export function makeTouchable(TouchableComponent, testID) {
+export function makeTouchable(TouchableComponent) {
   const Touchable =
     TouchableComponent ||
     Platform.select({
@@ -42,12 +42,9 @@ export function makeTouchable(TouchableComponent, testID) {
     })
   let defaultTouchableProps = {}
   if (Touchable === TouchableHighlight) {
-    defaultTouchableProps = {
-      underlayColor: 'rgba(0, 0, 0, 0.1)',
-    }
+    defaultTouchableProps = { underlayColor: 'rgba(0, 0, 0, 0.1)' }
   }
-  let test = { testID: testID }
-  return { Touchable, defaultTouchableProps, test }
+  return { Touchable, defaultTouchableProps }
 }
 
 function includes(arr, value) {

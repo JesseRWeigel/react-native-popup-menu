@@ -202,7 +202,7 @@
    * It also returns default props for specific touchable types.
    */
 
-  function makeTouchable(TouchableComponent, testID) {
+  function makeTouchable(TouchableComponent) {
     var Touchable = TouchableComponent || reactNative.Platform.select({
       android: reactNative.TouchableNativeFeedback,
       ios: reactNative.TouchableHighlight,
@@ -216,13 +216,9 @@
       };
     }
 
-    var test = {
-      testID: testID
-    };
     return {
       Touchable: Touchable,
-      defaultTouchableProps: defaultTouchableProps,
-      test: test
+      defaultTouchableProps: defaultTouchableProps
     };
   }
   /**
@@ -2513,6 +2509,7 @@
         }
 
         var rendered = React__default.createElement(reactNative.View, {
+          testID: testID,
           style: [defaultStyles.option, customStyles.optionWrapper, style]
         }, text ? React__default.createElement(reactNative.Text, {
           style: customStyles.optionText
@@ -2521,7 +2518,7 @@
         if (disableTouchable) {
           return rendered;
         } else {
-          var _makeTouchable = makeTouchable(customStyles.OptionTouchableComponent, testID),
+          var _makeTouchable = makeTouchable(customStyles.OptionTouchableComponent),
               Touchable = _makeTouchable.Touchable,
               defaultTouchableProps = _makeTouchable.defaultTouchableProps;
 
