@@ -202,7 +202,7 @@
    * It also returns default props for specific touchable types.
    */
 
-  function makeTouchable(TouchableComponent) {
+  function makeTouchable(TouchableComponent, testID) {
     var Touchable = TouchableComponent || reactNative.Platform.select({
       android: reactNative.TouchableNativeFeedback,
       ios: reactNative.TouchableHighlight,
@@ -212,7 +212,8 @@
 
     if (Touchable === reactNative.TouchableHighlight) {
       defaultTouchableProps = {
-        underlayColor: 'rgba(0, 0, 0, 0.1)'
+        underlayColor: 'rgba(0, 0, 0, 0.1)',
+        testID: testID
       };
     }
 
@@ -2491,7 +2492,7 @@
             disableTouchable = _this$props.disableTouchable,
             children = _this$props.children,
             style = _this$props.style,
-            props = _objectWithoutProperties(_this$props, ["text", "disabled", "disableTouchable", "children", "style"]);
+            testID = _this$props.testID;
 
         var customStyles = this._getCustomStyles();
 
@@ -2517,12 +2518,11 @@
         if (disableTouchable) {
           return rendered;
         } else {
-          var _makeTouchable = makeTouchable(customStyles.OptionTouchableComponent),
+          var _makeTouchable = makeTouchable(customStyles.OptionTouchableComponent, testID),
               Touchable = _makeTouchable.Touchable,
               defaultTouchableProps = _makeTouchable.defaultTouchableProps;
 
           return React__default.createElement(Touchable, _extends({
-            testID: props.testID && props.testID,
             onPress: function onPress() {
               return _this._onSelect();
             }
@@ -2539,7 +2539,8 @@
     onSelect: propTypes.func,
     text: propTypes.string,
     value: propTypes.any,
-    customStyles: propTypes.object
+    customStyles: propTypes.object,
+    testID: propTypes.string
   };
   MenuOption.defaultProps = {
     disabled: false,
